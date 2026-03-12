@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mulish, Bitcount, Saira } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/ui/SmoothScroll";
 
 const bitCount = Bitcount({
   variable: "--font-bitcount",
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body
         className={`${bitCount.variable} ${saira.variable} ${mulish.variable} antialiased`}
       >
+        <SmoothScroll />
         {children}
       </body>
     </html>

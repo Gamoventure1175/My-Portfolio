@@ -24,7 +24,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -135,5 +135,214 @@ body {
 
   .social-icon {
     @apply size-5;
+  }
+
+  .experience-shell {
+    @apply relative mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center gap-8 py-24 font-bitcount;
+  }
+
+  .experience-heading {
+    @apply flex flex-col gap-3;
+  }
+
+  .experience-title {
+    @apply font-bitcount text-3xl uppercase tracking-[0.35em] text-bold sm:text-4xl;
+    color: #f0d6a2;
+  }
+
+  .experience-subtitle {
+    @apply text-xs uppercase tracking-[0.35em] text-foreground/70;
+  }
+
+  .experience-helper {
+    @apply text-sm text-foreground/70;
+  }
+
+  .experience-stage {
+    @apply relative h-[360px] w-full overflow-hidden rounded-[28px] border border-foreground/20 sm:h-[420px];
+    background: linear-gradient(180deg, #2b1a10 0%, #0f0a07 100%);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .experience-track {
+    @apply relative h-full w-full;
+  }
+
+  .experience-clouds {
+    @apply absolute inset-0;
+    z-index: 0;
+    background-image: radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.08) 0 20px, transparent 22px),
+      radial-gradient(circle at 72% 28%, rgba(255, 255, 255, 0.06) 0 14px, transparent 16px),
+      radial-gradient(circle at 48% 18%, rgba(255, 255, 255, 0.05) 0 12px, transparent 14px);
+  }
+
+  .experience-hills {
+    @apply absolute left-0 right-0;
+    bottom: 96px;
+    height: 180px;
+    z-index: 1;
+    background-image: radial-gradient(circle at 15% 100%, rgba(26, 18, 12, 0.7) 0 140px, transparent 160px),
+      radial-gradient(circle at 55% 100%, rgba(30, 20, 14, 0.8) 0 180px, transparent 210px),
+      radial-gradient(circle at 85% 100%, rgba(24, 16, 10, 0.75) 0 120px, transparent 150px);
+  }
+
+  .experience-ground {
+    @apply absolute bottom-0 left-0 h-24 w-full;
+    background: linear-gradient(180deg, #a56a2a 0%, #6a3b13 100%);
+    box-shadow: inset 0 6px 0 rgba(255, 255, 255, 0.08);
+    z-index: 2;
+  }
+
+  .experience-ground::before {
+    content: \"\";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: linear-gradient(180deg, #5aa03a 0%, #2c6a1f 100%);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .experience-ground::after {
+    content: \"\";
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(58, 30, 10, 0.45) 0 22px,
+      rgba(58, 30, 10, 0.2) 22px 32px
+    );
+  }
+
+  .experience-player {
+    @apply absolute bottom-24 left-[6%] z-30 flex h-[96px] w-[96px] items-center justify-center overflow-visible rounded-none;
+    background: transparent;
+    transform-origin: center bottom;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .experience-avatar-wrap {
+    @apply h-full w-full;
+    animation: avatar-walk 0.32s steps(2) infinite;
+    transform-origin: center bottom;
+  }
+
+  .experience-avatar {
+    @apply h-full w-full object-contain;
+    image-rendering: pixelated;
+    display: block;
+  }
+
+  .experience-pipe {
+    @apply absolute bottom-24 z-40 h-[128px] w-[80px] border-2;
+    border-color: #1f4515;
+    background: linear-gradient(180deg, #3fae3c 0%, #256b23 100%);
+    box-shadow: inset 0 -12px 0 rgba(0, 0, 0, 0.28);
+  }
+
+  .experience-pipe::before {
+    content: \"\";
+    position: absolute;
+    top: -14px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: 20px;
+    border: 2px solid #1f4515;
+    background: #52c451;
+  }
+
+  .experience-pipe::after {
+    content: \"\";
+    position: absolute;
+    bottom: -8px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: 14px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(58, 30, 10, 0.6) 0%, rgba(58, 30, 10, 0.2) 100%);
+  }
+
+  .experience-pipe-label {
+    @apply absolute -top-12 left-1/2 max-w-[200px] -translate-x-1/2 text-center text-[10px] font-bitcount uppercase tracking-[0.22em] text-foreground/80;
+    color: rgba(255, 255, 255, 0.82);
+    white-space: nowrap;
+  }
+
+  .experience-cards {
+    @apply relative min-h-[220px] sm:min-h-[260px];
+  }
+
+  .experience-card {
+    @apply absolute left-0 top-0 w-full rounded-2xl border border-foreground/20 bg-[#120b07]/85 p-5 text-xs text-foreground/80 backdrop-blur sm:p-6 sm:text-sm;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+  }
+
+  .experience-card h3 {
+    @apply font-bitcount text-xl text-bold;
+  }
+
+  .experience-company {
+    @apply text-xs uppercase tracking-[0.3em] text-foreground/70;
+  }
+
+  .experience-period {
+    @apply text-xs uppercase tracking-[0.25em] text-foreground/60;
+  }
+
+  .experience-card-top {
+    @apply flex flex-wrap items-start justify-between gap-4;
+  }
+
+  .experience-theme {
+    @apply mt-3 text-base text-foreground/80;
+  }
+
+  .experience-card ul {
+    @apply mt-4 grid gap-2;
+  }
+
+  .experience-tags {
+    @apply mt-5 flex flex-wrap gap-2;
+  }
+
+  .experience-tags span {
+    @apply rounded-full border border-foreground/20 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-foreground/70;
+  }
+
+  @keyframes avatar-walk {
+    0% {
+      transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-2px) rotate(1deg);
+    }
+    100% {
+      transform: translateY(0) rotate(-1deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .experience-cards {
+      @apply grid gap-4;
+    }
+
+    .experience-card {
+      @apply relative visible opacity-100;
+      transform: none;
+    }
+
+    .experience-avatar-wrap {
+      animation: none;
+    }
   }
 }
