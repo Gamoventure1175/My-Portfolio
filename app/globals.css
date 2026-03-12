@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(21.4% 0.009 43.1);
+  --foreground: oklch(71.4% 0.014 41.2);
+  --bold: #d36f42;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bold: var(--bold);
+  --font-mulish: var(--font-mulish);
+  --font-saira: var(--font-saira);
+  --font-bitcount: var(--font-bitcount);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: oklch(21.4% 0.009 43.1);
+    --foreground: oklch(71.4% 0.014 41.2);
+    --bold: #d36f42;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility col-center {
+    @apply flex flex-col justify-center items-center;
+}
+
+@utility abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+
+@layer components {
+  main {
+    @apply relative min-h-screen w-full overflow-x-hidden px-6 font-mulish sm:px-10 lg:px-28;
+  }
+
+  nav {
+    @apply fixed right-0 top-0 z-50 h-screen w-fit bg-bold text-center text-white;
+
+    div {
+      @apply col-center h-full w-full px-3 md:px-6;
+    }
+
+    a {
+      @apply cursor-pointer whitespace-nowrap text-sm font-saira uppercase tracking-wide transition-colors md:text-base;
+    }
+
+    ul {
+      @apply flex flex-col gap-7 lg:gap-10;
+    }
+  }
+  
+  .name-panel {
+    @apply fixed left-0 top-0 z-40 h-screen w-fit col-center gap-5 px-3 md:px-6 font-saira text-foreground/80;
+    
+    .logo-image{
+      @apply size-16 md:size-20 lg:size-24;
+    }
+
+    .name-stack {
+      @apply text-lg leading-tight tracking-[0.3em] md:text-xl lg:text-2xl ;
+    }
+
+    .name-break {
+      @apply block h-3 ;
+    }
+
+    div {
+      @apply text-center;
+    }
+  }
+
+  .hero {
+    @apply mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center gap-16 py-16 text-center lg:gap-20;
+  }
+
+  .tag-line {
+    @apply flex-center gap-3 text-xs uppercase tracking-[0.35em] text-foreground/70 sm:text-sm;
+  }
+
+  .tag-line .circle {
+    @apply size-2 rounded-full bg-bold;
+  }
+
+  .profile {
+    @apply flex flex-col items-center gap-8 text-center lg:flex-row lg:items-center lg:gap-12 lg:text-left;
+  }
+
+  .profile-image {
+    @apply h-44 w-44 overflow-hidden ring-1 ring-bold/50 sm:h-56 sm:w-56 lg:h-72 lg:w-72;
+  }
+
+  .profile-text h1 {
+    @apply max-w-xl text-2xl font-saira leading-snug text-foreground sm:text-3xl lg:text-4xl;
+  }
+
+  .image-fix {
+    @apply h-full w-full object-cover;
+  }
+
+  .other-profiles {
+    @apply flex-center m-0 list-none gap-3 p-0;
+  }
+
+  .other-profiles a {
+    @apply flex h-10 w-10 items-center justify-center rounded-full border border-foreground/20 text-foreground/70 transition-colors;
+  }
+
+  .other-profiles a:hover {
+    @apply border-bold/60 text-bold;
+  }
+
+  .other-profiles a:focus-visible {
+    @apply outline-none ring-2 ring-bold/60 ring-offset-2 ring-offset-background;
+  }
+
+  .social-icon {
+    @apply size-5;
+  }
 }
