@@ -137,212 +137,346 @@ body {
     @apply size-5;
   }
 
+  .experience-section {
+    @apply relative w-full;
+  }
+
   .experience-shell {
-    @apply relative mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center gap-8 py-24 font-bitcount;
-  }
-
-  .experience-heading {
-    @apply flex flex-col gap-3;
-  }
-
-  .experience-title {
-    @apply font-bitcount text-3xl uppercase tracking-[0.35em] text-bold sm:text-4xl;
-    color: #f0d6a2;
-  }
-
-  .experience-subtitle {
-    @apply text-xs uppercase tracking-[0.35em] text-foreground/70;
-  }
-
-  .experience-helper {
-    @apply text-sm text-foreground/70;
+    @apply relative mx-auto flex min-h-screen w-full max-w-6xl items-center py-10 font-bitcount sm:py-14;
   }
 
   .experience-stage {
-    @apply relative h-[360px] w-full overflow-hidden rounded-[28px] border border-foreground/20 sm:h-[420px];
-    background: linear-gradient(180deg, #2b1a10 0%, #0f0a07 100%);
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    @apply relative h-[82vh] min-h-[620px] w-full overflow-hidden rounded-[32px] border;
+    background: linear-gradient(180deg, #08101b 0%, #02040a 100%);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+    isolation: isolate;
   }
 
-  .experience-track {
-    @apply relative h-full w-full;
-  }
-
-  .experience-clouds {
-    @apply absolute inset-0;
-    z-index: 0;
-    background-image: radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.08) 0 20px, transparent 22px),
-      radial-gradient(circle at 72% 28%, rgba(255, 255, 255, 0.06) 0 14px, transparent 16px),
-      radial-gradient(circle at 48% 18%, rgba(255, 255, 255, 0.05) 0 12px, transparent 14px);
-  }
-
-  .experience-hills {
-    @apply absolute left-0 right-0;
-    bottom: 96px;
-    height: 180px;
-    z-index: 1;
-    background-image: radial-gradient(circle at 15% 100%, rgba(26, 18, 12, 0.7) 0 140px, transparent 160px),
-      radial-gradient(circle at 55% 100%, rgba(30, 20, 14, 0.8) 0 180px, transparent 210px),
-      radial-gradient(circle at 85% 100%, rgba(24, 16, 10, 0.75) 0 120px, transparent 150px);
-  }
-
-  .experience-ground {
-    @apply absolute bottom-0 left-0 h-24 w-full;
-    background: linear-gradient(180deg, #a56a2a 0%, #6a3b13 100%);
-    box-shadow: inset 0 6px 0 rgba(255, 255, 255, 0.08);
-    z-index: 2;
-  }
-
-  .experience-ground::before {
-    content: \"\";
+  .experience-stage::after {
+    content: "";
     position: absolute;
-    top: -6px;
-    left: 0;
-    right: 0;
-    height: 14px;
-    background: linear-gradient(180deg, #5aa03a 0%, #2c6a1f 100%);
-    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25);
-  }
-
-  .experience-ground::after {
-    content: \"\";
-    position: absolute;
-    top: 16px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(58, 30, 10, 0.45) 0 22px,
-      rgba(58, 30, 10, 0.2) 22px 32px
-    );
-  }
-
-  .experience-player {
-    @apply absolute bottom-24 left-[6%] z-30 flex h-[96px] w-[96px] items-center justify-center overflow-visible rounded-none;
-    background: transparent;
-    transform-origin: center bottom;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+      linear-gradient(180deg, transparent 70%, rgba(2, 4, 10, 0.5) 100%);
     pointer-events: none;
+    z-index: 20;
+  }
+
+  .experience-hud {
+    @apply absolute left-0 right-0 top-0 z-40 flex flex-col gap-5 p-5 sm:p-7 lg:flex-row lg:items-start lg:justify-between;
+  }
+
+  .experience-hud-kicker {
+    @apply text-[10px] uppercase tracking-[0.35em] text-[#fff1c1]/80;
+  }
+
+  .experience-title {
+    @apply mt-2 text-3xl uppercase tracking-[0.28em] sm:text-4xl;
+    color: #fff1c1;
+    text-shadow: 0 4px 0 rgba(33, 23, 6, 0.65);
+  }
+
+  .experience-hud-copy {
+    @apply max-w-md space-y-2 text-left lg:text-right;
+  }
+
+  .experience-scene-label {
+    @apply text-xs uppercase tracking-[0.28em];
+    color: #ffd36f;
+  }
+
+  .experience-helper {
+    @apply text-xs leading-relaxed text-[#f5f1de]/80 sm:text-sm;
+  }
+
+  .experience-progress {
+    @apply absolute bottom-5 left-5 z-40 m-0 list-none flex flex-wrap gap-2 p-0 text-[10px] uppercase tracking-[0.18em] sm:bottom-7 sm:left-7;
+  }
+
+  .experience-progress li {
+    @apply border px-3 py-2 text-[#fff1c1]/60;
+    border-color: rgba(255, 241, 193, 0.18);
+    background: rgba(5, 7, 11, 0.55);
+    backdrop-filter: blur(4px);
+  }
+
+  .experience-progress li.is-active {
+    color: #090909;
+    background: #ffd36f;
+    border-color: #ffd36f;
+    box-shadow: 0 0 0 2px rgba(9, 9, 9, 0.2);
+  }
+
+  .experience-progress span {
+    @apply block max-w-[14rem] truncate;
+  }
+
+  .experience-scene {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .experience-scene-main {
+    background: linear-gradient(180deg, #78c8ff 0%, #4497f4 65%, #0e5bad 100%);
+  }
+
+  .experience-scene-under {
+    background: linear-gradient(180deg, #111521 0%, #05070d 30%, #000000 100%);
+  }
+
+  .experience-scene-exit {
+    background: linear-gradient(180deg, #7cd2ff 0%, #60aaf3 58%, #2a6db8 100%);
+  }
+
+  .experience-cloud-band {
+    @apply absolute z-[1] opacity-80;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.18));
+  }
+
+  .experience-cloud-band-left {
+    top: 12%;
+    left: -2%;
+  }
+
+  .experience-cloud-band-right {
+    top: 6%;
+    right: -10%;
+  }
+
+  .experience-main-strip,
+  .experience-exit-strip,
+  .experience-room-strip {
+    @apply absolute bottom-0 left-0 z-[3] flex w-max;
+    image-rendering: pixelated;
+  }
+
+  .experience-main-strip {
+    transform: translateX(-3%);
+  }
+
+  .experience-exit-strip {
+    transform: translateX(-1%);
+  }
+
+  .experience-under-track {
+    @apply absolute inset-0 flex h-full;
     will-change: transform;
   }
 
-  .experience-avatar-wrap {
-    @apply h-full w-full;
-    animation: avatar-walk 0.32s steps(2) infinite;
-    transform-origin: center bottom;
+  .experience-room {
+    @apply relative h-full w-full flex-none overflow-hidden;
   }
 
-  .experience-avatar {
-    @apply h-full w-full object-contain;
-    image-rendering: pixelated;
-    display: block;
+  .experience-room::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(17, 21, 33, 0.1) 0%, rgba(0, 0, 0, 0.42) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .experience-room-strip {
+    z-index: 2;
+    transform: translateX(-2%);
+    opacity: 0.96;
   }
 
   .experience-pipe {
-    @apply absolute bottom-24 z-40 h-[128px] w-[80px] border-2;
-    border-color: #1f4515;
-    background: linear-gradient(180deg, #3fae3c 0%, #256b23 100%);
-    box-shadow: inset 0 -12px 0 rgba(0, 0, 0, 0.28);
+    @apply absolute z-[10] flex flex-col items-center;
+    image-rendering: pixelated;
+    pointer-events: none;
+    filter: drop-shadow(0 12px 0 rgba(0, 0, 0, 0.2));
   }
 
-  .experience-pipe::before {
-    content: \"\";
+  .experience-main-pipe {
+    left: 71%;
+    bottom: 17%;
+  }
+
+  .experience-room-pipe {
+    bottom: 8%;
+  }
+
+  .experience-room-pipe-left {
+    left: 4%;
+  }
+
+  .experience-room-pipe-right {
+    left: 79%;
+  }
+
+  .experience-exit-pipe {
+    left: 9%;
+    bottom: 14%;
+  }
+
+  .experience-scene-caption {
+    @apply absolute z-[12] max-w-sm border px-4 py-3 text-[11px] uppercase leading-relaxed tracking-[0.2em];
+    color: #fff1c1;
+    border-color: rgba(255, 241, 193, 0.22);
+    background: rgba(7, 8, 12, 0.72);
+    box-shadow: 8px 8px 0 rgba(7, 8, 12, 0.35);
+  }
+
+  .experience-main-caption {
+    right: 6%;
+    bottom: 34%;
+  }
+
+  .experience-exit-caption {
+    right: 7%;
+    bottom: 28%;
+  }
+
+  .experience-room-card {
+    @apply absolute z-[11] w-[min(34rem,68vw)] p-5 text-[11px] leading-relaxed text-[#fff7da] sm:p-6 sm:text-xs;
+    top: 19%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(7, 7, 7, 0.9);
+    box-shadow: 0 0 0 2px #fce8a8, 0 0 0 6px #241509, 18px 18px 0 rgba(0, 0, 0, 0.35);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .experience-room-card.is-active {
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow: 0 0 0 2px #ffe28d, 0 0 0 6px #2c1908, 26px 26px 0 rgba(0, 0, 0, 0.36);
+  }
+
+  .experience-room-card-top {
+    @apply flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.22em];
+    color: rgba(255, 241, 193, 0.72);
+  }
+
+  .experience-room-world {
+    color: #ffd36f;
+  }
+
+  .experience-room-period {
+    @apply text-right;
+  }
+
+  .experience-room-company {
+    @apply mt-3 text-sm uppercase tracking-[0.18em] text-[#ffd36f] sm:text-base;
+  }
+
+  .experience-room-card h3 {
+    @apply mt-2 text-xl uppercase tracking-[0.14em] text-[#fff7da] sm:text-2xl;
+  }
+
+  .experience-room-theme {
+    @apply mt-3 text-[#fff7da]/80;
+  }
+
+  .experience-room-highlights {
+    @apply mt-5 m-0 list-none grid gap-3 p-0 text-[#f7f1db];
+  }
+
+  .experience-room-highlights li {
+    @apply relative pl-4;
+  }
+
+  .experience-room-highlights li::before {
+    content: "";
     position: absolute;
-    top: -14px;
-    left: -8px;
-    width: calc(100% + 16px);
-    height: 20px;
-    border: 2px solid #1f4515;
-    background: #52c451;
+    left: 0;
+    top: 0.55rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    background: #ffd36f;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35);
   }
 
-  .experience-pipe::after {
-    content: \"\";
-    position: absolute;
-    bottom: -8px;
-    left: -10px;
-    width: calc(100% + 20px);
-    height: 14px;
-    border-radius: 8px;
-    background: linear-gradient(180deg, rgba(58, 30, 10, 0.6) 0%, rgba(58, 30, 10, 0.2) 100%);
-  }
-
-  .experience-pipe-label {
-    @apply absolute -top-12 left-1/2 max-w-[200px] -translate-x-1/2 text-center text-[10px] font-bitcount uppercase tracking-[0.22em] text-foreground/80;
-    color: rgba(255, 255, 255, 0.82);
-    white-space: nowrap;
-  }
-
-  .experience-cards {
-    @apply relative min-h-[220px] sm:min-h-[260px];
-  }
-
-  .experience-card {
-    @apply absolute left-0 top-0 w-full rounded-2xl border border-foreground/20 bg-[#120b07]/85 p-5 text-xs text-foreground/80 backdrop-blur sm:p-6 sm:text-sm;
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(12px);
-  }
-
-  .experience-card h3 {
-    @apply font-bitcount text-xl text-bold;
-  }
-
-  .experience-company {
-    @apply text-xs uppercase tracking-[0.3em] text-foreground/70;
-  }
-
-  .experience-period {
-    @apply text-xs uppercase tracking-[0.25em] text-foreground/60;
-  }
-
-  .experience-card-top {
-    @apply flex flex-wrap items-start justify-between gap-4;
-  }
-
-  .experience-theme {
-    @apply mt-3 text-base text-foreground/80;
-  }
-
-  .experience-card ul {
-    @apply mt-4 grid gap-2;
-  }
-
-  .experience-tags {
+  .experience-room-tags {
     @apply mt-5 flex flex-wrap gap-2;
   }
 
-  .experience-tags span {
-    @apply rounded-full border border-foreground/20 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-foreground/70;
+  .experience-room-tags span {
+    @apply border px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[#fff7da]/82;
+    border-color: rgba(255, 241, 193, 0.16);
+    background: rgba(255, 255, 255, 0.04);
   }
 
-  @keyframes avatar-walk {
-    0% {
-      transform: translateY(0) rotate(-1deg);
+  .experience-castle {
+    @apply absolute z-[10];
+    left: 72%;
+    bottom: 18%;
+    image-rendering: pixelated;
+    filter: drop-shadow(14px 10px 0 rgba(0, 0, 0, 0.18));
+  }
+
+  .experience-mario {
+    @apply z-[30];
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  @media (max-width: 768px) {
+    .experience-stage {
+      @apply min-h-[560px];
     }
-    50% {
-      transform: translateY(-2px) rotate(1deg);
+
+    .experience-title {
+      @apply text-2xl tracking-[0.2em];
     }
-    100% {
-      transform: translateY(0) rotate(-1deg);
+
+    .experience-progress {
+      @apply right-5 left-auto max-w-[80%] justify-end;
+    }
+
+    .experience-main-caption,
+    .experience-exit-caption {
+      @apply hidden;
+    }
+
+    .experience-room-card {
+      top: 18%;
+      width: min(90vw, 34rem);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .experience-cards {
-      @apply grid gap-4;
+    .experience-shell {
+      @apply min-h-0 py-10;
     }
 
-    .experience-card {
-      @apply relative visible opacity-100;
-      transform: none;
+    .experience-stage {
+      @apply h-auto min-h-0;
+      padding-top: 7rem;
+      padding-bottom: 2rem;
     }
 
-    .experience-avatar-wrap {
-      animation: none;
+    .experience-progress,
+    .experience-scene-main,
+    .experience-scene-exit,
+    .experience-mario {
+      display: none;
+    }
+
+    .experience-scene-under {
+      position: relative;
+      inset: auto;
+      opacity: 1 !important;
+      transform: none !important;
+      overflow: visible;
+    }
+
+    .experience-under-track {
+      position: relative;
+      inset: auto;
+      display: grid;
+      gap: 1.5rem;
+      transform: none !important;
+    }
+
+    .experience-room {
+      min-height: 620px;
+    }
+
+    .experience-room-card {
+      width: min(90vw, 34rem);
     }
   }
 }

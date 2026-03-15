@@ -1,4 +1,4 @@
-import Hero from "@/components/ui/Hero";
+import Hero from "@/components/sections/Hero";
 import NamePanel from "@/components/ui/NamePanel";
 import NavBar from "@/components/ui/NavBar";
 import ExperienceSection from "@/components/sections/ExperienceSection";
